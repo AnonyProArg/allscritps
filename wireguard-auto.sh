@@ -520,7 +520,7 @@ else
 	echo "   4) Contacto"
 	echo "   5) Salir"
 	read -p "Option: " option
-	until [[ "$option" =~ ^[1-4]$ ]]; do
+	until [[ "$option" =~ ^[1-5]$ ]]; do
 		echo "$option: invalid selection."
 		read -p "Option: " option
 	done
