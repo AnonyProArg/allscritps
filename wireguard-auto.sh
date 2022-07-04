@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# https://github.com/Nyr/wireguard-install
 #
-# Copyright (c) 2020 Nyr. Released under the MIT License.
+# Copyright (c) 2022 @MByts. Released under the MIT License.
 
 
 # Detect Debian users running the script with "sh" instead of bash
@@ -280,7 +279,7 @@ if [[ ! -e /etc/wireguard/wg0.conf ]]; then
 			firewall="iptables"
 		fi
 	fi
-	read -n1 -r -p "Press any key to continue..."
+	read -n1 -r -p "presiona una tecla para continuar..."
 	# Install WireGuard
 	# If not running inside a container, set up the WireGuard kernel module
 	if [[ ! "$is_container" -eq 0 ]]; then
@@ -505,7 +504,7 @@ EOF
 			echo "Reboot the system to load the most recent kernel."
 		fi
 	else
-		echo "Finished!"
+		echo "Finished! @MByts"
 	fi
 	echo
 	echo "The client configuration is available in:" ~/"$client.conf"
@@ -518,7 +517,8 @@ else
 	echo "   1) Agregar new Cliente"
 	echo "   2) Eliminar Cliente"
 	echo "   3) Desinatalar WireGuard"
-	echo "   4) Salir"
+	echo "   4) Contacto"
+	echo "   5) Salir"
 	read -p "Option: " option
 	until [[ "$option" =~ ^[1-4]$ ]]; do
 		echo "$option: invalid selection."
@@ -681,8 +681,15 @@ else
 				echo "WireGuard removal aborted!"
 			fi
 			exit
-		;;
+			;;
 		4)
+		echo " Telegram: @MByts"
+		echo " notificar venta o uso indevido. ty"
+		
+		fi
+		exit
+		;;
+		5)
 			exit
 		;;
 	esac
