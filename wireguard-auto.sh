@@ -510,22 +510,9 @@ EOF
 	echo "The client configuration is available in:" ~/"$client.conf"
 	echo "New clients can be added by running this script again."
 else
-	clear
-	echo "WireGuard 2022 @MByts"
+        clear
+	agregar_user () {
 	echo
-	echo "Select an option:"
-	echo "   1) Agregar new Cliente"
-	echo "   2) Eliminar Cliente"
-	echo "   3) Desinatalar WireGuard"
-	echo "   4) Salir"
-	read -p "Option: " option
-	until [[ "$option" =~ ^[1-4]$ ]]; do
-		echo "$option: invalid selection."
-		read -p "Option: " option
-	done
-	case "$option" in
-		1)
-			echo
 			echo "Provide a name for the client:"
 			read -p "Name: " unsanitized_client
 			# Allow a limited set of characters to avoid conflicts
@@ -546,6 +533,22 @@ else
 			echo
 			echo "$client added. Configuration available in:" ~/"$client.conf"
 			exit
+	clear
+	echo "WireGuard 2022 @MByts"
+	echo
+	echo "Select an option:"
+	echo "   1) Agregar new Cliente"
+	echo "   2) Eliminar Cliente"
+	echo "   3) Desinatalar WireGuard"
+	echo "   4) Salir"
+	read -p "Option: " option
+	until [[ "$option" =~ ^[1-4]$ ]]; do
+		echo "$option: invalid selection."
+		read -p "Option: " option
+	done
+	case "$option" in
+		1)
+		agregar_user
 		;;
 		2)
 			# This option could be documented a bit better and maybe even be simplified
