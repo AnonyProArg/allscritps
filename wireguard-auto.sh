@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2022 @MByts. Released under the MIT License.
 
-
+instalar_shh () {
 # Detect Debian users running the script with "sh" instead of bash
 if readlink /proc/$$/exe | grep -q "dash"; then
 	echo 'This installer needs to be run with "bash", not "sh".'
@@ -510,7 +510,8 @@ EOF
 	echo "The client configuration is available in:" ~/"$client.conf"
 	echo "New clients can be added by running this script again."
 else
-        
+}
+
 agregar_user () {
 clear
 	echo
@@ -693,6 +694,9 @@ eliminar_user
 desintalar_wire
 ;;
 4)
-exit
+instalar_shh
+;;
+0)
+exit_ex
 ;;
 esac
