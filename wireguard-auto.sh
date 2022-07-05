@@ -533,24 +533,8 @@ else
 			echo
 			echo "$client added. Configuration available in:" ~/"$client.conf"
 			exit
-	clear
-	echo "WireGuard 2022 @MByts"
-	echo
-	echo "Select an option:"
-	echo "   1) Agregar new Cliente"
-	echo "   2) Eliminar Cliente"
-	echo "   3) Desinatalar WireGuard"
-	echo "   4) Salir"
-	read -p "Option: " option
-	until [[ "$option" =~ ^[1-4]$ ]]; do
-		echo "$option: invalid selection."
-		read -p "Option: " option
-	done
-	case "$option" in
-		1)
-		agregar_user
-		;;
-		2)
+			clear
+			eliminar_user () {
 			# This option could be documented a bit better and maybe even be simplified
 			# ...but what can I say, I want some sleep too
 			number_of_clients=$(grep -c '^# BEGIN_PEER' /etc/wireguard/wg0.conf)
@@ -587,8 +571,8 @@ else
 				echo "$client removal aborted!"
 			fi
 			exit
-		;;
-		3)
+			clear
+			desintalar_wire () {
 			echo
 			read -p "Confirm WireGuard removal? [y/N]: " remove
 			until [[ "$remove" =~ ^[yYnN]*$ ]]; do
@@ -683,9 +667,28 @@ else
 				echo "WireGuard removal aborted!"
 			fi
 			exit
-		;;
-		4)
-			exit
-		;;
-	esac
-fi
+	clear
+echo -e "            MENU PRINCIPAL WIREGUARD"
+echo
+echo -e "${cor[4]} 1).-AGREGAR USUARIO "
+echo -e "${cor[4]} 2).-ELIMINAR USUARIO  "
+echo -e "${cor[4]} 3).-DESINTALAR WIREGUARD "
+echo -e "${cor[4]} 4).-EXTRA "
+echo -e "${cor[4]} 0).-SALIR DEL SCRIPT"
+msg -bar
+echo -ne "\033[1;37m DIGITE LA OPCIÓN: "
+read opcao
+case $opcao in
+1)
+agregar_user
+;;
+2)
+eliminar_user
+;;
+3)
+desintalar_wire
+;;
+4)
+exit
+;;
+                esac
