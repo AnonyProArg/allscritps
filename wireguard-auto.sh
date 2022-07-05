@@ -510,6 +510,7 @@ EOF
 	echo "The client configuration is available in:" ~/"$client.conf"
 	echo "New clients can be added by running this script again."
 else
+}
         clear
 	agregar_user () {
 	echo
@@ -571,6 +572,7 @@ else
 				echo "$client removal aborted!"
 			fi
 			exit
+}
 			clear
 			desintalar_wire () {
 			echo
@@ -667,16 +669,17 @@ else
 				echo "WireGuard removal aborted!"
 			fi
 			exit
+}
 	clear
 echo -e "            MENU PRINCIPAL WIREGUARD"
 echo
-echo -e "${cor[4]} 1).-AGREGAR USUARIO "
-echo -e "${cor[4]} 2).-ELIMINAR USUARIO  "
-echo -e "${cor[4]} 3).-DESINTALAR WIREGUARD "
-echo -e "${cor[4]} 4).-EXTRA "
-echo -e "${cor[4]} 0).-SALIR DEL SCRIPT"
-msg -bar
-echo -ne "\033[1;37m DIGITE LA OPCIÓN: "
+echo -e "1).-AGREGAR USUARIO "
+echo -e "2).-ELIMINAR USUARIO  "
+echo -e "3).-DESINTALAR WIREGUARD "
+echo -e "4).-EXTRA "
+echo -e "0).-SALIR DEL SCRIPT"
+echo
+echo -ne "-DIGITE LA OPCIÓN: "
 read opcao
 case $opcao in
 1)
@@ -691,4 +694,4 @@ desintalar_wire
 4)
 exit
 ;;
-                esac
+esac
