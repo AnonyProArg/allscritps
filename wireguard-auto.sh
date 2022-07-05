@@ -509,7 +509,6 @@ EOF
 	echo
 	echo "The client configuration is available in:" ~/"$client.conf"
 	echo "New clients can be added by running this script again."
-else
 }
 
 agregar_user () {
