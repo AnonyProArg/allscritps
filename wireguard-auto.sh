@@ -686,7 +686,6 @@ else
 		echo " Telegram: @MByts"
 		echo " notificar venta o uso indevido. ty"
 		
-		fi
 		exit
 		;;
 		5)
