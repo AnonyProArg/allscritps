@@ -2,37 +2,14 @@
 
 chmod 777 menu.sh
 
+apt install git
+
+
+clear
+
 ver_user () {
 clear
-number_of_clients=$(grep -c '^# BEGIN_PEER' /etc/wireguard/wg0.conf)
-	if [[ "$number_of_clients" = 0 ]]; then
-		echo  "No hay clientes configurados"
-		sleep 2
-		return 0
-	fi
-	echo "DATOS CLIENTES WIREGUARD"
-	cl_data
-	back
-	opcion=$(selection_fun $n)
-	[[ $opcion = 0 ]] && return 0
-	client=$(grep '^# BEGIN_PEER' /etc/wireguard/wg0.conf | cut -d ' ' -f 3 | sed -n "$opcion"p)
-	[[ ! -e ~/"$client.conf" ]] && cp -f ${ADM_tmp}/client_wg/"$client".conf ~/"$client".conf
-	echo  "CLIENTE QR WIREGUARD"
-	print_center "Su archivo de configuracion se encuentra en"
-	dircfg=~/"$client.conf"
-	print_center "$dircfg"
-	echo
-	print_center "Quires ver el QR digita [QR]"
-	in_opcion_down "Enter para salir"
-	if [[ $opcion = @(QR|qr) ]]; then
-		echo "CLIENTE QR WIREGUARD"
-		qrencode -t ansiutf8 < ~/"$client.conf"
-		echo
-		print_center "CLIENTE QR WIREGUARD"
-		enter
-	fi
-	sleep 10
-  ./menu.sh
+git clone https://github.com/AnonyProArg/newt /etc/ADMRufu
 }
 echo -e "        MINI MENU WIREGUARD"
 echo
