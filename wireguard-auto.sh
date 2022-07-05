@@ -514,11 +514,10 @@ else
 	echo "WireGuard is already installed."
 	echo
 	echo "Select an option:"
-	echo "   1) Agregar new Cliente"
-	echo "   2) Eliminar Cliente"
-	echo "   3) Desinatalar WireGuard"
-	echo "   4) Contacto"
-	echo "   5) Salir"
+	echo "   1) AGREGAR USER"
+	echo "   2) ELIMINAR USER"
+	echo "   3) DESINTALAR USER"
+	echo "   5) INFO USERS"
 	read -p "Option: " option
 	until [[ "$option" =~ ^[1-5]$ ]]; do
 		echo "$option: invalid selection."
@@ -682,14 +681,36 @@ else
 			fi
 			exit
 			;;
+
 		4)
-		echo " Telegram: @MByts"
-		echo " notificar venta o uso indevido. ty"
-		
-		exit
-		;;
-		5)
-			exit
+			view_wg(){
+	number_of_clients=$(grep -c '^# BEGIN_PEER' /etc/wireguard/wg0.conf)
+	if [[ "$number_of_clients" = 0 ]]; then
+		title -ama "No hay clientes configurados"
+		sleep 2
+		return 0
+	fi
+	title "DATOS CLIENTES WIREGUARD"
+	cl_data
+	back
+	opcion=$(selection_fun $n)
+	[[ $opcion = 0 ]] && return 0
+	client=$(grep '^# BEGIN_PEER' /etc/wireguard/wg0.conf | cut -d ' ' -f 3 | sed -n "$opcion"p)
+	[[ ! -e ~/"$client.conf" ]] && cp -f ${ADM_tmp}/client_wg/"$client".conf ~/"$client".conf
+	title -ama "CLIENTE QR WIREGUARD"
+	print_center -verd "Su archivo de configuracion se encuentra en"
+	dircfg=~/"$client.conf"
+	print_center -verd "$dircfg"
+	msg -bar
+	print_center -ama "Quires ver el QR digita [QR]"
+	in_opcion_down "Enter para salir"
+	if [[ $opcion = @(QR|qr) ]]; then
+		title -ama "CLIENTE QR WIREGUARD"
+		qrencode -t ansiutf8 < ~/"$client.conf"
+		msg -bar
+		print_center -ama "CLIENTE QR WIREGUARD"
+		enter
+	fi
 		;;
 	esac
 fi
