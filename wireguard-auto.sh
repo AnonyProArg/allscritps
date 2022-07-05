@@ -517,7 +517,7 @@ else
 	echo "   1) AGREGAR USER"
 	echo "   2) ELIMINAR USER"
 	echo "   3) DESINTALAR USER"
-	echo "   5) MENU PRINCIPAL"
+	echo "   5) salir del script"
 	read -p "Option: " option
 	until [[ "$option" =~ ^[1-5]$ ]]; do
 		echo "$option: invalid selection."
