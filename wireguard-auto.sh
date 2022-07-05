@@ -510,9 +510,9 @@ EOF
 	echo "The client configuration is available in:" ~/"$client.conf"
 	echo "New clients can be added by running this script again."
 else
-}
-        clear
-	agregar_user () {
+        
+agregar_user () {
+clear
 	echo
 			echo "Provide a name for the client:"
 			read -p "Name: " unsanitized_client
@@ -573,8 +573,9 @@ else
 			fi
 			exit
 }
-			clear
-			desintalar_wire () {
+			
+desintalar_wire () {
+clear
 			echo
 			read -p "Confirm WireGuard removal? [y/N]: " remove
 			until [[ "$remove" =~ ^[yYnN]*$ ]]; do
