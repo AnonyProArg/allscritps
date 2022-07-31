@@ -1,14 +1,12 @@
 {
     "server":"SERVER",
-    "server_port":443,
+    "server_port":8080,
     "local_address": "127.0.0.1",
     "local_port":1080,
-    "password":"PASSWORD",
+    "password":"EllNOTeAMA",
     "timeout":300,
     "method":"chacha20-ietf-poly1305",
     "workers":8,
-    "plugin":"/usr/local/bin/obfs-local",
-    "plugin_opts": "obfs=tls;obfs-host=www.bing.com",
     "fast_open":true,
     "reuse_port":true
 }
